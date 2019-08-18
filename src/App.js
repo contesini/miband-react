@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import Box from '@material-ui/core/Box'
 import If from "./template/if";
+import ButtonConnectart from './template/buttonConnectar'
 import './App.css';
 
 class App extends React.Component {
@@ -98,7 +99,8 @@ class App extends React.Component {
         </div>
         <If hidden={this.props.device !== null}>
           <div className='button-padding'>
-            <Button variant="contained" color="primary" onClick={() => this.scan(console.log)}>Conectar</Button>
+            {/* <Button variant="contained" color="primary" onClick={() => this.scan(console.log)}>Conectar</Button> */}
+            <ButtonConnectart/>
           </div>
         </If>
         <If hidden={this.props.isTreinoStarted || this.props.device === null}>
