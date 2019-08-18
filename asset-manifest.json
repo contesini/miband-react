@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/miband-react/static/css/main.ecf7eb69.chunk.css",
+    "main.js": "/miband-react/static/js/main.d66ae09d.chunk.js",
+    "main.js.map": "/miband-react/static/js/main.d66ae09d.chunk.js.map",
+    "runtime~main.js": "/miband-react/static/js/runtime~main.f3afbe20.js",
+    "runtime~main.js.map": "/miband-react/static/js/runtime~main.f3afbe20.js.map",
+    "static/js/2.e3f93b1a.chunk.js": "/miband-react/static/js/2.e3f93b1a.chunk.js",
+    "static/js/2.e3f93b1a.chunk.js.map": "/miband-react/static/js/2.e3f93b1a.chunk.js.map",
+    "index.html": "/miband-react/index.html",
+    "precache-manifest.bac85e8435bbcfd10c895730359df967.js": "/miband-react/precache-manifest.bac85e8435bbcfd10c895730359df967.js",
+    "service-worker.js": "/miband-react/service-worker.js",
+    "static/css/main.ecf7eb69.chunk.css.map": "/miband-react/static/css/main.ecf7eb69.chunk.css.map"
+  }
+}
