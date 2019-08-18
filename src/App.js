@@ -9,6 +9,7 @@ import Box from '@material-ui/core/Box'
 import If from "./template/if";
 import ButtonConnectart from './template/buttonConnectar'
 import ButtonIniciarTreino from './template/buttonIniciarTreino'
+import ButtonFinalizarTreino from './template/buttonFinalizarTreino'
 import './App.css';
 
 class App extends React.Component {
@@ -100,18 +101,19 @@ class App extends React.Component {
         <If hidden={this.props.device !== null}>
           <div className='button-padding'>
             {/* <Button variant="contained" color="primary" onClick={() => this.scan(console.log)}>Conectar</Button> */}
-            <ButtonConnectart/>
+            <ButtonConnectart />
           </div>
         </If>
         <If hidden={this.props.isTreinoStarted || this.props.device === null}>
           <div className='button-padding'>
             {/* <Button variant="contained" color="primary" onClick={() => this.startHrm(console.log)}>Iniciar Treino</Button> */}
-            <ButtonIniciarTreino/>
+            <ButtonIniciarTreino />
           </div>
         </If>
         <If hidden={!this.props.isTreinoStarted || this.props.device === null}>
           <div className='button-padding'>
-            <Button variant="contained" color="primary" onClick={() => this.endHrm(console.log)}>Finalizar Treino</Button>
+            {/* <Button variant="contained" color="primary" onClick={() => this.endHrm(console.log)}>Finalizar Treino</Button> */}
+            <ButtonFinalizarTreino />
           </div>
         </If>
         <If hidden={this.props.device === null}>
