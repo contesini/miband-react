@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "128c66b79b83b8517bcab93f382a1de3",
+    "revision": "95e91a17c5a04be0f88c37bd31158f7f",
     "url": "/miband-react/index.html"
   },
   {
-    "revision": "852fe4766a9f4609deef",
+    "revision": "52f2c51fb1c8ef01b26a",
     "url": "/miband-react/static/css/main.ecf7eb69.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/miband-react/static/js/2.98619355.chunk.js"
   },
   {
-    "revision": "852fe4766a9f4609deef",
-    "url": "/miband-react/static/js/main.4e53be35.chunk.js"
+    "revision": "52f2c51fb1c8ef01b26a",
+    "url": "/miband-react/static/js/main.fa618612.chunk.js"
   },
   {
     "revision": "1a5f69823acacc8889ab",
