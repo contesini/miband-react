@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 
 const INITIAL_STATE = {
-    id: '123548',
-    name: 'allan contesini',
+    id: undefined,
+    name: undefined,
     hearthBeat: 0,
     bluetooth: null,
     device: null,
