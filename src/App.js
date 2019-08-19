@@ -19,14 +19,15 @@ class App extends React.Component {
   }
 
   render() {
-    const splitUrl = window.location.href.split('/')
-    if (splitUrl.length === 5) {
-      this.props.changeName(splitUrl[4])
-      this.props.changeId(splitUrl[3])
+    const splitUrl = window.location.search.split('?')
+    if (splitUrl.length === 2) {
+      this.props.changeId(splitUrl[1].split(':')[0])
+      this.props.changeName(splitUrl[1].split(':')[1])
     }
 
     return (
       <Box className="App" justifyContent="flex-start">
+        {/* <h1>Pulseira: {this.props.serial}</h1> */}
         <If hidden={!this.props.name}>
           <h1>{this.props.name}</h1>
         </If>
