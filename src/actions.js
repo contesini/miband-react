@@ -32,3 +32,8 @@ export const changeTreinoStatus = (treino) => ({
     type: 'TREINO_CHANGED',
     payload: treino
 })
+
+export const changeLoading = (loading) => ({
+    type: 'LOADING_CHANGED',
+    payload: loading
+})

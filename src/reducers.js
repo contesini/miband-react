@@ -8,6 +8,7 @@ const INITIAL_STATE = {
     device: null,
     miband: null,
     isTreinoStarted: false,
+    loading: true
 }
 
 export const userReducer = (state = INITIAL_STATE, action) => {
@@ -26,6 +27,8 @@ export const userReducer = (state = INITIAL_STATE, action) => {
             return { ...state, device: action.payload }
         case 'TREINO_CHANGED':
             return { ...state, isTreinoStarted: action.payload }
+        case 'LOADING_CHANGED':
+            return { ...state, loading: action.payload}
         default:
             return { ...state }
     }
