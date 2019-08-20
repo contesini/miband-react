@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/miband-react/static/css/main.ecf7eb69.chunk.css",
-    "main.js": "/miband-react/static/js/main.fa618612.chunk.js",
-    "main.js.map": "/miband-react/static/js/main.fa618612.chunk.js.map",
-    "runtime~main.js": "/miband-react/static/js/runtime~main.f3afbe20.js",
-    "runtime~main.js.map": "/miband-react/static/js/runtime~main.f3afbe20.js.map",
-    "static/js/2.98619355.chunk.js": "/miband-react/static/js/2.98619355.chunk.js",
-    "static/js/2.98619355.chunk.js.map": "/miband-react/static/js/2.98619355.chunk.js.map",
+    "main.js": "/miband-react/static/js/main.423bb9f0.chunk.js",
+    "main.js.map": "/miband-react/static/js/main.423bb9f0.chunk.js.map",
+    "runtime~main.js": "/miband-react/static/js/runtime~main.ce979af1.js",
+    "runtime~main.js.map": "/miband-react/static/js/runtime~main.ce979af1.js.map",
+    "static/js/2.9ee4e81e.chunk.js": "/miband-react/static/js/2.9ee4e81e.chunk.js",
+    "static/js/2.9ee4e81e.chunk.js.map": "/miband-react/static/js/2.9ee4e81e.chunk.js.map",
     "index.html": "/miband-react/index.html",
-    "precache-manifest.9b80a10d9f48b45cb8afac9889420cde.js": "/miband-react/precache-manifest.9b80a10d9f48b45cb8afac9889420cde.js",
+    "precache-manifest.cf3e3ff683bb57d5a9692bc4156415d4.js": "/miband-react/precache-manifest.cf3e3ff683bb57d5a9692bc4156415d4.js",
     "service-worker.js": "/miband-react/service-worker.js",
     "static/css/main.ecf7eb69.chunk.css.map": "/miband-react/static/css/main.ecf7eb69.chunk.css.map"
   }

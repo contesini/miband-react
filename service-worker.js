@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/miband-react/precache-manifest.9b80a10d9f48b45cb8afac9889420cde.js"
+  "/miband-react/precache-manifest.cf3e3ff683bb57d5a9692bc4156415d4.js"
 );
 
 self.addEventListener('message', (event) => {
