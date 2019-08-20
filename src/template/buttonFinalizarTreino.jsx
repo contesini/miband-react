@@ -3,7 +3,7 @@ import React from 'react'
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { changeTreinoStatus, changeMiband } from '../actions'
+import { changeTreinoStatus, changeMiband, changeLoading } from '../actions'
 
 
 class ButtonFinalizarTreino extends React.Component {
@@ -13,10 +13,17 @@ class ButtonFinalizarTreino extends React.Component {
     }
 
     endHrm = async (log) => {
+        this.props.changeLoading(true)
         log('end hrm')
-        await this.props.miband.hrmStop()
-        await this.props.changeTreinoStatus(false)
-        await this.props.changeMiband(null)
+        try {
+            await this.props.miband.hrmStop()
+            await this.props.changeTreinoStatus(false)
+            this.props.changeLoading(false)
+            await this.props.changeMiband(null)
+        } catch (error) {
+            await this.props.changeTreinoStatus(false)
+            this.props.changeLoading(false)
+        }
         log('disconnect device')
     }
 
@@ -32,5 +39,5 @@ const mapStateToProps = state => ({
     miband: state.user.miband,
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({ changeTreinoStatus, changeMiband }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ changeTreinoStatus, changeMiband, changeLoading }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(ButtonFinalizarTreino);

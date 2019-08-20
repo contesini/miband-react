@@ -1,12 +1,15 @@
 
 
-import React from 'react'
+import React, { Fragment } from 'react'
 import Button from '@material-ui/core/Button';
 import MiBand from 'miband';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { changeHearthBeat, changeTreinoStatus, changeMiband } from '../actions'
+import { changeHearthBeat, changeTreinoStatus, changeMiband, changeLoading } from '../actions'
+import { withSnackbar } from 'notistack';
 
+let count = 0;
+let retry = 0;
 
 class ButtonIniciarTreino extends React.Component {
 
@@ -16,6 +19,7 @@ class ButtonIniciarTreino extends React.Component {
     }
 
     startHrm = async (log) => {
+        this.props.changeLoading(true)
         try {
             await this.props.changeTreinoStatus(true)
             log('Connecting to the device...');
@@ -28,12 +32,41 @@ class ButtonIniciarTreino extends React.Component {
                     log('Heart Rate:', rate)
                     this.props.changeHearthBeat(rate)
                 })
+                miband.on('button', () => {
+                    log('button tapped, count: ', count)
+                    count += 1;
+                    setTimeout(() => count = 0, 3000)
+                    if (count > 1) {
+                        const action = (key) => (
+                            <Fragment>
+                                <Button onClick={() => { this.props.closeSnackbar(key) }}>
+                                    {'Fechar'}
+                                </Button>
+                            </Fragment>
+                        );
+                        this.props.enqueueSnackbar('Usuario precisa de ajuda', { variant: 'warning', action, autoHideDuration: null });
+                        count = 0;
+                    }
+                })
                 this.props.changeMiband(miband)
+                await miband.hrmStart()
+                this.props.changeLoading(false)
+            } else {
+                await this.props.miband.hrmStart()
+                this.props.changeLoading(false)
             }
-            await this.props.miband.hrmStart()
         } catch (error) {
             log('Argh!', error.message || error);
-            await this.props.changeTreinoStatus(false)
+            if (retry > 8) {
+                await this.props.changeTreinoStatus(false)
+                this.props.enqueueSnackbar('Ocorreu um erro tente novamente', { variant: 'error' });
+                retry = 0
+                this.props.changeLoading(false)
+            } else {
+                retry += 1;
+                log('Retrying ...')
+                this.startHrm(log)
+            }
         }
     }
 
@@ -50,5 +83,5 @@ const mapStateToProps = state => ({
     miband: state.user.miband,
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({ changeHearthBeat, changeTreinoStatus, changeMiband }, dispatch)
-export default connect(mapStateToProps, mapDispatchToProps)(ButtonIniciarTreino);
+const mapDispatchToProps = dispatch => bindActionCreators({ changeHearthBeat, changeTreinoStatus, changeMiband, changeLoading }, dispatch)
+export default connect(mapStateToProps, mapDispatchToProps)(withSnackbar(ButtonIniciarTreino));

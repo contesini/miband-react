@@ -4,8 +4,8 @@ import Button from '@material-ui/core/Button';
 import MiBand from 'miband';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { changeDevice } from '../actions'
-
+import { changeDevice, changeLoading } from '../actions'
+import { withSnackbar } from 'notistack';
 
 class ButtonConnectart extends React.Component {
 
@@ -15,6 +15,7 @@ class ButtonConnectart extends React.Component {
     }
 
     async connectar(log) {
+        this.props.changeLoading(true)
         let device;
         if (!this.props.bluetooth) {
             log('WebBluetooth is not supported by your browser!');
@@ -34,9 +35,12 @@ class ButtonConnectart extends React.Component {
         device.addEventListener('gattserverdisconnected', async () => {
             log('Device disconnected');
             await device.gatt.disconnect();
+            this.props.enqueueSnackbar('Pulseira desconectada', { variant: 'error' });
         });
 
         await device.gatt.disconnect();
+        this.props.changeLoading(false)
+
     }
 
     render() {
@@ -51,5 +55,5 @@ const mapStateToProps = state => ({
     bluetooth: state.user.bluetooth,
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({ changeDevice }, dispatch)
-export default connect(mapStateToProps, mapDispatchToProps)(ButtonConnectart);
+const mapDispatchToProps = dispatch => bindActionCreators({ changeDevice, changeLoading }, dispatch)
+export default connect(mapStateToProps, mapDispatchToProps)(withSnackbar(ButtonConnectart));

@@ -5,6 +5,8 @@ import { Provider } from 'react-redux'
 import promise from 'redux-promise'
 import multi from 'redux-multi'
 import thunk from 'redux-thunk'
+import { SnackbarProvider } from 'notistack'
+
 
 import './index.css';
 import App from './App';
@@ -17,7 +19,9 @@ const store = applyMiddleware(thunk, multi, promise)(createStore)(reducers, devT
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <SnackbarProvider maxSnack={3}>
+            <App />
+        </SnackbarProvider>
     </Provider>
     , document.getElementById('root'));
 
